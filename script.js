@@ -85,8 +85,7 @@ function goLeft() {
   if(tabMapLoad[posY][posX - 1]["ct"] == espaceInsecable){
     changeCell(posX, posY, espaceInsecable);
     posX -= 1;
-    tabMapLoad[posY][posX]["ct"] = "@";
-    tabMapLoad[posY][posX]["obj"].empty().append("@");
+    changeCell(posX, posY, "@");
   }
 }
 
@@ -94,8 +93,7 @@ function goRight() {
   if(tabMapLoad[posY][posX + 1]["ct"] == espaceInsecable){
     changeCell(posX, posY, espaceInsecable);
     posX += 1;
-    tabMapLoad[posY][posX]["ct"] = "@";
-    tabMapLoad[posY][posX]["obj"].empty().append("@");
+    changeCell(posX, posY, "@");
   }
 }
 
@@ -103,8 +101,7 @@ function goUp() {
   if(tabMapLoad[posY - 1][posX]["ct"] == espaceInsecable){
     changeCell(posX, posY, espaceInsecable);
     posY -= 1;
-    tabMapLoad[posY][posX]["ct"] = "@";
-    tabMapLoad[posY][posX]["obj"].empty().append("@");
+    changeCell(posX, posY, "@");
   }
 }
 
@@ -112,8 +109,7 @@ function goDown() {
   if(tabMapLoad[posY + 1][posX]["ct"] == espaceInsecable){
     changeCell(posX, posY, espaceInsecable);
     posY += 1;
-    tabMapLoad[posY][posX]["ct"] = "@";
-    tabMapLoad[posY][posX]["obj"].empty().append("@");
+    changeCell(posX, posY, "@");
   }
 }
 
