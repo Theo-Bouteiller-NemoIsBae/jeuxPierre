@@ -19,6 +19,10 @@ class Tableau {
       let tabLigne = [];
 
       for (let col of ligne) {
+        if (col == " "){
+          col = espaceInsecable;
+        }
+
         let maCol = $('<td></td>').append(col).appendTo(maLigne);
         let cells = {"ct":col, "obj": maCol};
         if (col == "@"){
@@ -78,9 +82,8 @@ $( document ).ready(function () {
 });
 
 function goLeft() {
-  if(tabMapLoad[posY][posX - 1]["ct"] == " "){
-    tabMapLoad[posY][posX]["ct"] = " ";
-    tabMapLoad[posY][posX]["obj"].empty().append(" ");
+  if(tabMapLoad[posY][posX - 1]["ct"] == espaceInsecable){
+    changeCell(posX, posY, espaceInsecable);
     posX -= 1;
     tabMapLoad[posY][posX]["ct"] = "@";
     tabMapLoad[posY][posX]["obj"].empty().append("@");
@@ -88,9 +91,8 @@ function goLeft() {
 }
 
 function goRight() {
-  if(tabMapLoad[posY][posX + 1]["ct"] == " "){
-    tabMapLoad[posY][posX]["ct"] = " ";
-    tabMapLoad[posY][posX]["obj"].empty().append(" ");
+  if(tabMapLoad[posY][posX + 1]["ct"] == espaceInsecable){
+    changeCell(posX, posY, espaceInsecable);
     posX += 1;
     tabMapLoad[posY][posX]["ct"] = "@";
     tabMapLoad[posY][posX]["obj"].empty().append("@");
@@ -98,9 +100,8 @@ function goRight() {
 }
 
 function goUp() {
-  if(tabMapLoad[posY - 1][posX]["ct"] == " "){
-    tabMapLoad[posY][posX]["ct"] = " ";
-    tabMapLoad[posY][posX]["obj"].empty().append(" ");
+  if(tabMapLoad[posY - 1][posX]["ct"] == espaceInsecable){
+    changeCell(posX, posY, espaceInsecable);
     posY -= 1;
     tabMapLoad[posY][posX]["ct"] = "@";
     tabMapLoad[posY][posX]["obj"].empty().append("@");
@@ -108,9 +109,8 @@ function goUp() {
 }
 
 function goDown() {
-  if(tabMapLoad[posY + 1][posX]["ct"] == " "){
-    tabMapLoad[posY][posX]["ct"] = " ";
-    tabMapLoad[posY][posX]["obj"].empty().append(" ");
+  if(tabMapLoad[posY + 1][posX]["ct"] == espaceInsecable){
+    changeCell(posX, posY, espaceInsecable);
     posY += 1;
     tabMapLoad[posY][posX]["ct"] = "@";
     tabMapLoad[posY][posX]["obj"].empty().append("@");
@@ -119,4 +119,9 @@ function goDown() {
 
 function afficherPos() {
   console.log("posX : " + posX + " posY : " + posY);
+}
+
+function changeCell(posX, posY, char) {
+  tabMapLoad[posY][posX]["ct"] = char;
+  tabMapLoad[posY][posX]["obj"].empty().append(char);
 }
